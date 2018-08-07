@@ -41,7 +41,7 @@ else {
 				echo '<td>'.$pr['headline'].'</td>';
 				echo '<td>'.$pr['summary'].'</td>';
 				if (isset($_SESSION['userid'])){
-					echo "<td><a href="."edit.php?id=".$pr['user_id'].">Edit</a>"." / "."<a href="."delete.php?id=".$pr['user_id'].">Delete</a>"."</td>";
+					echo "<td><a href="."edit.php?id=".$pr['profile_id'].">Edit</a>"." / "."<a href="."delete.php?id=".$pr['profile_id'].">Delete</a>"."</td>";
 				}
 			echo '<tr>';
 		}
@@ -49,11 +49,17 @@ else {
 	echo '</table>';
 }
 
+if (isset($_SESSION['message']))
+	{
+		echo "<p>".$_SESSION['message']."<p>";
+	}
 
 if (isset($_SESSION['userid'])) { 
 	echo '<a href="add.php">Add new profile</a><br>';
 	echo '<a href="logout.php">Log out</a><br>';
 }
+unset($_SESSION['message']);
+unset($_SESSION['post']);
 ?>
 
 
